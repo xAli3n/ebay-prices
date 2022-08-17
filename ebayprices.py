@@ -17,9 +17,9 @@ def parse(soup):
         product = {
             'title': item.find('h3', {'class': 's-item__title s-item__title--has-tags'}).text,
             'soldprice': float(item.find('span', {'class': 's-item__price'}).text.replace('£','').replace(',','').strip()),
-            'solddate': item.find('span', {'class': 's-item__title--tagblock__COMPLETED'}).find('span', {'class':'POSITIVE'}).text,
+            'solddate': item.find('span', {'class': 's-item__title--tagblock'}).find('span', {'class':'POSITIVE'}).text,
             'bids': item.find('span', {'class': 's-item__bids'}).text,
-            'link': item.find('a', {'class': 's-item__link'})['href'],
+            'link': item.find('a', {'class': 's-item__link'})['href'],           
         }
         productslist.append(product)
     return productslist
